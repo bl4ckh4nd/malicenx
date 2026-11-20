@@ -1,0 +1,23 @@
+services:
+  malicenx:
+    environment:
+      MALICENX_SMTP_INTAKE_RECIPIENT: ${MALICENX_SMTP_INTAKE_RECIPIENT:?Set the gateway scan recipient}
+      MALICENX_TOKEN: ${MALICENX_TOKEN:?Set a reader token when using the gateway}
+    networks: [backend, egress, mail-ingress]
+  mail-gateway:
+    build: ./mail-gateway
+    image: malicenx-mail-gateway:dev
+    environment:
+      GATEWAY_HOSTNAME: ${MALICENX_GATEWAY_HOSTNAME:?Set the gateway hostname}
+      GATEWAY_RECIPIENT: ${MALICENX_SMTP_INTAKE_RECIPIENT:?Set the gateway scan recipient}
+    ports:
+      - "${MALICENX_GATEWAY_BIND:-127.0.0.1}:${MALICENX_GATEWAY_PORT:-2526}:25"
+    volumes:
+      - ${MALICENX_GATEWAY_CERT_DIR:?Set a directory with fullchain.pem and privkey.pem}:/certs:ro,z
+    networks: [mail-ingress, gateway-edge]
+    restart: unless-stopped
+
+networks:
+  mail-ingress:
+    internal: true
+  gateway-edge: {}

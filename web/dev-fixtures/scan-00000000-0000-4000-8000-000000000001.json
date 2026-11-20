@@ -1,0 +1,56 @@
+{
+  "id": "00000000-0000-4000-8000-000000000001",
+  "file": {
+    "name": "invoice_Q4_final.xlsm",
+    "size": 184320,
+    "mime": "application/vnd.ms-excel.sheet.macroEnabled.12",
+    "md5": "545f7f577c93318b34476e9999931731",
+    "sha1": "a22c81f9e58d3e183314100cda7df50c66582b16",
+    "sha256": "89270a50341bb8e83734ee062603c63c219320ed4a40fb9fb8c2792358548e8a",
+    "sha512": "653e423ac5fbd52ccf92c4c0a686c761cbf435b58ed940bf5c28d60eb8469fd15fa1e051febf7c8dca10ec4cdca2b38e168dde08faa2436a43a2c9552bcf7298"
+  },
+  "created_at": "now-40",
+  "finished_at": null,
+  "status": "running",
+  "verdict": "pending",
+  "engines_expected": 6,
+  "engines_reported": 3,
+  "detections": [],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 14,
+      "error": null,
+      "data": {
+        "infected": false,
+        "result": "OK"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 6,
+      "error": null,
+      "data": {
+        "matches": []
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "running",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": null,
+      "error": null,
+      "data": null
+    }
+  ]
+}

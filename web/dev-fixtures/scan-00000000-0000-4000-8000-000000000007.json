@@ -1,0 +1,110 @@
+{
+  "id": "00000000-0000-4000-8000-000000000007",
+  "file": {
+    "name": "budget-2027.xlsm",
+    "size": 98304,
+    "mime": "application/vnd.ms-excel.sheet.macroEnabled.12",
+    "md5": "cbfadbcb1dd2edb34f2ebca810c0092b",
+    "sha1": "9f96ee61859198b4b8ed1412e8a8406889affcf7",
+    "sha256": "bcb2b9b7f8d21a516751096b2946a149669aac65b6bb2ffaed30a0eb19d37fd9",
+    "sha512": "8b2a6262cdb150c96bdf80aa8953a4bfa3e4300566e885946f60aca347eb87905a1859e3cb43c30a636b6f282120c5b0c2e397985f0ab097c513838263d6c14a"
+  },
+  "created_at": "now-75600",
+  "finished_at": "now-75595",
+  "status": "done",
+  "verdict": "threat",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [
+    {
+      "engine": "yara",
+      "name": "Office_AutoOpen_Macro"
+    }
+  ],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 14,
+      "error": null,
+      "data": {
+        "infected": false,
+        "result": "OK"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "threat",
+      "signature": "Office_AutoOpen_Macro",
+      "duration_ms": 19,
+      "error": null,
+      "data": {
+        "matches": [
+          {
+            "rule": "Office_AutoOpen_Macro",
+            "tags": [
+              "macro"
+            ],
+            "namespace": "default"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "FileType": "XLSM"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": false
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 310,
+      "error": null,
+      "data": {
+        "macros": true,
+        "suspicious": [
+          "AutoOpen",
+          "Shell",
+          "CreateObject"
+        ]
+      }
+    }
+  ]
+}

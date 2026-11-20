@@ -1,0 +1,91 @@
+{
+  "id": "00000000-0000-4000-8000-000000000005",
+  "file": {
+    "name": "holiday-photo.jpg",
+    "size": 3321856,
+    "mime": "image/jpeg",
+    "md5": "c36bbd258b7ee694eb987221b2b197b0",
+    "sha1": "aed65cdb66c1129f81e57d35b788d35820e08ea4",
+    "sha256": "f8146b6cb4961f87a1519047b8c83402754ed108ade55457d43166e564b7b4fe",
+    "sha512": "2169f875198fafb60e80067bf2d74222d720849ab152b43f9b49c6e584ac06e0e88c1b92c5bb0f40f325c2ab42d2b932f6d7aba774db562a816d390b7897d8df"
+  },
+  "created_at": "now-18000",
+  "finished_at": "now-17997",
+  "status": "done",
+  "verdict": "clean",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 14,
+      "error": null,
+      "data": {
+        "infected": false,
+        "result": "OK"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 6,
+      "error": null,
+      "data": {
+        "matches": []
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "ImageSize": "4032x3024",
+        "Make": "Pixel"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": false
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "not an Office document",
+      "data": null
+    }
+  ]
+}

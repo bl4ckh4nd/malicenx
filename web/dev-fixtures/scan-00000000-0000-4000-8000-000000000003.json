@@ -1,0 +1,92 @@
+{
+  "id": "00000000-0000-4000-8000-000000000003",
+  "file": {
+    "name": "quarterly-report.pdf",
+    "size": 2412096,
+    "mime": "application/pdf",
+    "md5": "437175ba4191210ee004e1d937494d09",
+    "sha1": "ce9f44bc3d348133b47226685a8f75bbf17e757b",
+    "sha256": "c35b21d6ca39aa7cc3b79a705d989f1a6e88b99ab43988d74048799e3db926a3",
+    "sha512": "02f5c3b98e514bbb8cafd782d48e4d88322644174f877c70d7867700228c0894eda4570d42c976cb27cac0dad1418749cdcbfb458bace97e51cb03ce8463934b"
+  },
+  "created_at": "now-2820",
+  "finished_at": "now-2816",
+  "status": "done",
+  "verdict": "clean",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 14,
+      "error": null,
+      "data": {
+        "infected": false,
+        "result": "OK"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 6,
+      "error": null,
+      "data": {
+        "matches": []
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "PDFVersion": "1.7",
+        "PageCount": 14,
+        "Producer": "LibreOffice 24.8"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": false
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "error",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 5000,
+      "error": "analysis timed out after 5 s",
+      "data": null
+    }
+  ]
+}

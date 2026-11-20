@@ -1,0 +1,14 @@
+{
+  "ignore": ["dev-fixtures/**", "dist/**"],
+  "componentDirs": ["**/components/ui/**"],
+  "properNouns": ["MaliceNX", "VirusTotal", "ClamAV", "YARA"],
+  "allow": {
+    "focus-ring-removed": ["src/components/ui/**"],
+    "no-transition-all": ["src/components/ui/**"],
+    "radius-scale": ["src/components/ui/**"],
+    "no-tight-leading": ["src/components/ui/**"],
+    "ellipsis-character": ["src/components/ui/**"],
+    "pulse-for-live-only": ["src/components/ui/skeleton.tsx"],
+    "use-shared-looks": ["src/components/kpi-strip.tsx", "src/components/page-header.tsx", "src/components/upload.tsx"]
+  }
+}

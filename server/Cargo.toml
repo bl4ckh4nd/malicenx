@@ -1,0 +1,38 @@
+[package]
+name = "malicenx"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+repository = "https://github.com/bl4ckh4nd/malicenx"
+
+[dependencies]
+anyhow = "1"
+axum = { version = "0.8", features = ["multipart"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+futures-util = "0.3"
+hex = "0.4"
+hmac = "0.13"
+mail-parser = "0.11"
+lettre = { version = "0.11", default-features = false, features = ["builder", "smtp-transport", "tokio1-rustls-tls"] }
+md-5 = "0.11"
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls"] }
+rusqlite = { version = "0.43", features = ["bundled", "fallible_uint"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha1 = "0.11"
+sha2 = "0.11"
+smtpd = "0.1"
+tantivy = "0.27"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "fs", "io-util", "sync", "time", "signal"] }
+tower-http = { version = "0.7", features = ["fs"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4"] }
+yara-x = "1.23"
+# yara-x 1.23 needs rsa's pkcs1v15 API, which rsa 0.10.0 put behind a feature.
+rsa = { version = "0.10", default-features = false, features = ["pkcs1v15"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 4

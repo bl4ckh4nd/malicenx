@@ -1,0 +1,109 @@
+{
+  "id": "00000000-0000-4000-8000-000000000002",
+  "file": {
+    "name": "eicar.com",
+    "size": 68,
+    "mime": "text/plain",
+    "md5": "3a7efa00c7023ae647d0faa8b034c014",
+    "sha1": "c81b16fd0c3f34f33961e56ec848067fbd152775",
+    "sha256": "fe796dcce928a3876beb11ba9d0df018f810cc4760289b92eb16e1430a9c44f0",
+    "sha512": "1c72c437bb940990b5c041c4d653519a12c2c46f1f3e0a803466c6d51f6c0706195be9e7f5b2149052a4c1fd319da0c47e75dd03a2d450b10bc56032f3e03418"
+  },
+  "created_at": "now-720",
+  "finished_at": "now-717",
+  "status": "done",
+  "verdict": "threat",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [
+    {
+      "engine": "clamav",
+      "name": "Eicar-Signature"
+    },
+    {
+      "engine": "yara",
+      "name": "EICAR_test_file"
+    }
+  ],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "threat",
+      "signature": "Eicar-Signature",
+      "duration_ms": 12,
+      "error": null,
+      "data": {
+        "infected": true,
+        "result": "Eicar-Signature"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "threat",
+      "signature": "EICAR_test_file",
+      "duration_ms": 5,
+      "error": null,
+      "data": {
+        "matches": [
+          {
+            "rule": "EICAR_test_file",
+            "tags": [
+              "test"
+            ],
+            "namespace": "default"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "FileType": "COM",
+        "MIMEType": "text/plain",
+        "FileSize": "68 bytes"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": false
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "not an Office document",
+      "data": null
+    }
+  ]
+}

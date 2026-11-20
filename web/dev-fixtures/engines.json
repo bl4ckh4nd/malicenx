@@ -1,0 +1,73 @@
+{
+  "engines": [
+    {
+      "name": "yara",
+      "category": "av",
+      "kind": "builtin",
+      "description": "Rule-based pattern matching",
+      "mime": [
+        "*"
+      ],
+      "ready": true,
+      "detail": "212 rules"
+    },
+    {
+      "name": "pe",
+      "category": "exe",
+      "kind": "builtin",
+      "description": "Static analysis of Windows executables",
+      "mime": [
+        "application/vnd.microsoft.portable-executable",
+        "application/x-dosexec"
+      ],
+      "ready": true,
+      "detail": null
+    },
+    {
+      "name": "clamav",
+      "category": "av",
+      "kind": "service",
+      "description": "Open-source antivirus daemon",
+      "mime": [
+        "*"
+      ],
+      "ready": true,
+      "detail": "signatures from 2026-11-18"
+    },
+    {
+      "name": "virustotal",
+      "category": "intel",
+      "kind": "service",
+      "description": "Hash lookup against VirusTotal",
+      "mime": [
+        "hash"
+      ],
+      "ready": false,
+      "detail": "no API key"
+    },
+    {
+      "name": "exiftool",
+      "category": "metadata",
+      "kind": "container",
+      "description": "Metadata extraction",
+      "mime": [
+        "*"
+      ],
+      "ready": true,
+      "detail": "image malicenx/exiftool:0.1"
+    },
+    {
+      "name": "oletools",
+      "category": "document",
+      "kind": "container",
+      "description": "Office macro and OLE analysis",
+      "mime": [
+        "application/msword",
+        "application/vnd.ms-excel",
+        "application/vnd.ms-excel.sheet.macroEnabled.12"
+      ],
+      "ready": true,
+      "detail": "image malicenx/oletools:0.1"
+    }
+  ]
+}

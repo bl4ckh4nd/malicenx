@@ -1,0 +1,120 @@
+{
+  "id": "00000000-0000-4000-8000-000000000004",
+  "file": {
+    "name": "setup-helper.exe",
+    "size": 5873664,
+    "mime": "application/vnd.microsoft.portable-executable",
+    "md5": "98e83379d45538379c2ac4e47c3be81d",
+    "sha1": "d659d96d15c7a1206f44eb36ed72495563140859",
+    "sha256": "9095bdb859308b62acf04036ffd4adfe366d7f737d276eb6c46ae434f3816c9b",
+    "sha512": "789f09c2868b1f6aa75bcdc4a2c761525d7a50617c76a8892307bc268bd0c4a6e4c5359486e556f9f6233a32dc4b5b97e41a63d03a28d2da37d1aa7bf15f8ddb"
+  },
+  "created_at": "now-7200",
+  "finished_at": "now-7194",
+  "status": "done",
+  "verdict": "threat",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [
+    {
+      "engine": "clamav",
+      "name": "Win.Trojan.Agent-9981"
+    },
+    {
+      "engine": "yara",
+      "name": "UPX_packed"
+    }
+  ],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "threat",
+      "signature": "Win.Trojan.Agent-9981",
+      "duration_ms": 88,
+      "error": null,
+      "data": {
+        "infected": true,
+        "result": "Win.Trojan.Agent-9981"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "threat",
+      "signature": "UPX_packed",
+      "duration_ms": 31,
+      "error": null,
+      "data": {
+        "matches": [
+          {
+            "rule": "UPX_packed",
+            "tags": [
+              "packer"
+            ],
+            "namespace": "default"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "FileType": "Win32 EXE",
+        "Subsystem": "Windows GUI",
+        "Architecture": "x86"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": true,
+        "sections": [
+          ".text",
+          ".rsrc",
+          "UPX0",
+          "UPX1"
+        ],
+        "imports": [
+          "KERNEL32.dll",
+          "WININET.dll"
+        ],
+        "entropy": 7.62
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "not an Office document",
+      "data": null
+    }
+  ]
+}

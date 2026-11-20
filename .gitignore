@@ -1,0 +1,8 @@
+server/target/
+web/node_modules/
+web/dist/
+artifacts/
+data/
+.playwright-cli/
+.env
+.env.*

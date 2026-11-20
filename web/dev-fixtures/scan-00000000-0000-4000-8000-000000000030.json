@@ -1,0 +1,90 @@
+{
+  "id": "00000000-0000-4000-8000-000000000030",
+  "file": {
+    "name": "sample-30.bin",
+    "size": 30720,
+    "mime": "application/octet-stream",
+    "md5": "0d6eccf00593e4f1c6e22ee059e41264",
+    "sha1": "5067ea561c386cb9143cb44a0de65d3ede032cb2",
+    "sha256": "71887144a16bdf3185604be1dabb427fe611eaa17b7c02d2d023a5bff2233752",
+    "sha512": "8a19e311ea26000ba01dcdaaa2588761ce56b7356c5e175d30e9c0d7b3b828b4f0f7592ebb0cdb2c4fb34e57bb3c3dfb8e4f1bdef3589329a0c92e5c06716aee"
+  },
+  "created_at": "now-2764800",
+  "finished_at": "now-2764797",
+  "status": "done",
+  "verdict": "clean",
+  "engines_expected": 6,
+  "engines_reported": 6,
+  "detections": [],
+  "results": [
+    {
+      "engine": "clamav",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 14,
+      "error": null,
+      "data": {
+        "infected": false,
+        "result": "OK"
+      }
+    },
+    {
+      "engine": "yara",
+      "category": "av",
+      "status": "ok",
+      "verdict": "clean",
+      "signature": null,
+      "duration_ms": 6,
+      "error": null,
+      "data": {
+        "matches": []
+      }
+    },
+    {
+      "engine": "virustotal",
+      "category": "intel",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "VIRUSTOTAL_API_KEY not set",
+      "data": null
+    },
+    {
+      "engine": "exiftool",
+      "category": "metadata",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 41,
+      "error": null,
+      "data": {
+        "FileType": "BIN"
+      }
+    },
+    {
+      "engine": "pe",
+      "category": "exe",
+      "status": "ok",
+      "verdict": "info",
+      "signature": null,
+      "duration_ms": 22,
+      "error": null,
+      "data": {
+        "is_pe": false
+      }
+    },
+    {
+      "engine": "oletools",
+      "category": "document",
+      "status": "skipped",
+      "verdict": null,
+      "signature": null,
+      "duration_ms": 0,
+      "error": "not an Office document",
+      "data": null
+    }
+  ]
+}

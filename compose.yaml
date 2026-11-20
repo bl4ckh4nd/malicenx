@@ -1,0 +1,74 @@
+name: malicenx
+
+services:
+  malicenx:
+    build: .
+    image: malicenx:dev
+    ports:
+      # Bound to localhost; put a reverse proxy with TLS in front for remote access.
+      - "127.0.0.1:${MALICENX_PORT:-3993}:3993"
+      - "127.0.0.1:${MALICENX_SMTP_INTAKE_PORT:-2525}:2525"
+    environment:
+      MALICENX_SMTP_LISTEN: "0.0.0.0:2525"
+      MALICENX_SMTP_INTAKE_RECIPIENT: ${MALICENX_SMTP_INTAKE_RECIPIENT:-scan@malicenx.local}
+      VIRUSTOTAL_API_KEY: ${VIRUSTOTAL_API_KEY:-}
+      MALICENX_TOKEN: ${MALICENX_TOKEN:-}
+      MALICENX_INGEST_TOKENS: ${MALICENX_INGEST_TOKENS:-}
+      MALICENX_INGEST_TOKEN: ${MALICENX_INGEST_TOKEN:-}
+      MALICENX_MAX_ACCEPTED: ${MALICENX_MAX_ACCEPTED:-16}
+      MALICENX_SAMPLE_RETENTION_HOURS: ${MALICENX_SAMPLE_RETENTION_HOURS:-}
+      MALICENX_PUBLIC_URL: ${MALICENX_PUBLIC_URL:-}
+      MALICENX_WEBHOOK_URL: ${MALICENX_WEBHOOK_URL:-}
+      MALICENX_WEBHOOK_SECRET: ${MALICENX_WEBHOOK_SECRET:-}
+      MALICENX_SMTP_HOST: ${MALICENX_SMTP_HOST:-}
+      MALICENX_SMTP_CA_FILE: ${MALICENX_SMTP_CA_FILE:-}
+      MALICENX_SMTP_PORT: ${MALICENX_SMTP_PORT:-}
+      MALICENX_SMTP_USER: ${MALICENX_SMTP_USER:-}
+      MALICENX_SMTP_PASSWORD: ${MALICENX_SMTP_PASSWORD:-}
+      MALICENX_SMTP_FROM: ${MALICENX_SMTP_FROM:-}
+      MALICENX_SMTP_TO: ${MALICENX_SMTP_TO:-}
+      MALICENX_MAX_SCANS: ${MALICENX_MAX_SCANS:-4}
+    volumes:
+      - data:/data
+      # Extra YARA rules: drop .yar files into ./rules and restart.
+      # "z" relabels the folder for SELinux hosts (Fedora, RHEL); other hosts ignore it.
+      - ./rules:/rules:ro,z
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      clamd:
+        condition: service_healthy
+    networks: [backend, egress]
+    restart: unless-stopped
+
+  clamd:
+    image: docker.io/clamav/clamav:1.5.4
+    environment:
+      # Must stay above the server's 256 MiB upload limit.
+      CLAMD_CONF_StreamMaxLength: 260M
+      CLAMD_CONF_MaxFileSize: 256M
+      CLAMD_CONF_MaxScanSize: 1024M
+    volumes:
+      # freshclam keeps the signatures here up to date.
+      - clamav-db:/var/lib/clamav
+    healthcheck:
+      test: ["CMD", "clamdcheck.sh"]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    networks: [backend, egress]
+    restart: unless-stopped
+
+networks:
+  # Server <-> clamd only; no route to the outside.
+  backend:
+    internal: true
+  # Hash lookups (server) and signature updates (freshclam).
+  egress: {}
+
+volumes:
+  data:
+  clamav-db:
